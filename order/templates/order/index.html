@@ -1,16 +1,13 @@
 {% extends 'order/base.html' %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-
-    <ul>
+    <ul class="list-articles">
         {% for p in plans %}
-            <li>
-                <h2>{{ p.planName }}</h2>
+            <li><h2>{{p.planName}}</h2>
                 <h3>speed: {{ p.speed }}</h3>
                 <h3>price: {{ p.price }} NIS</h3>
-                <hr>
+                <p class="link-read-post"><a href="#">Upgrade now</a></p>
             </li>
         {% endfor %}
     </ul>
-{% endblock content %}
+{% endblock %}

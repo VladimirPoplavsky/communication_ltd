@@ -6,7 +6,7 @@
             <li><h2>{{p.planName}}</h2>
                 <h3>speed: {{ p.speed }}</h3>
                 <h3>price: {{ p.price }} NIS</h3>
-                <p class="link-read-post"><a href="#">Upgrade now</a></p>
+                <p class="link-read-post"><a href="{{ p.get_absolute_url }}">Upgrade now</a></p>
             </li>
         {% endfor %}
     </ul>

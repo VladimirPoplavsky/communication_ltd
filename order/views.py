@@ -38,14 +38,14 @@ def support(request):
 def upgrade_now(request, plan_id):
     return HttpResponse(f"Show info about plan with id = {plan_id}")
 
-def plan200(request):
-    return HttpResponse("plan 200mb")
-
-def plan600(request):
-    return HttpResponse("plan 600mb")
-
-def plan1000(request):
-    return HttpResponse("plan 1000mb")
+# def plan200(request):
+#     return HttpResponse("plan 200mb")
+#
+# def plan600(request):
+#     return HttpResponse("plan 600mb")
+#
+# def plan1000(request):
+#     return HttpResponse("plan 1000mb")
 
 #error 404 OUR custom message
 def pageNotFound(request, exception):

@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import *
 
@@ -36,7 +36,17 @@ def support(request):
     return HttpResponse("Technical Support")
 
 def upgrade_now(request, plan_id):
-    return HttpResponse(f"Show info about plan with id = {plan_id}")
+    plan = get_object_or_404(InternetPlans, pk = plan_id)
+
+    context = {
+        'plan': plan,
+        'menu': menu,
+        'title': plan.speed,
+        'plan_selected': plan_id
+    }
+
+    return render(request, 'order/plan.html', context = context)
+
 
 # def plan200(request):
 #     return HttpResponse("plan 200mb")

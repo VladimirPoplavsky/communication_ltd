@@ -21,3 +21,10 @@ class InternetPlans(models.Model):
     class Meta:
         verbose_name = 'Internet Package'
         verbose_name_plural = 'Internet Packages'
+
+# class UserHelpRequest(models.Model):
+#     user_id = models.IntegerField(verbose_name= "User ID")
+#     request_content = models.TextField(blank=True)
+#     request_title = models.CharField(max_length=255)
+#     is_request_open = models.BooleanField(default=False)
+

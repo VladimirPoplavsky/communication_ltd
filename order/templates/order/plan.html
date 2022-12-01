@@ -1,0 +1,9 @@
+{% extends 'order/base.html' %}
+
+{% block content %}
+    <h1>{{ plan.planName }}</h1>
+    <h2>speed: {{ plan.speed }}</h2>
+    <h2>Price: {{ plan.price }} NIS/month</h2>
+
+    {{ post.content|linebreaks }}
+{% endblock %}

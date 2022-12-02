@@ -8,6 +8,7 @@ class InternetPlans(models.Model):
     speed = models.CharField(max_length=20, verbose_name="Speed Mbps")
     price = models.FloatField(verbose_name="Monthly price in NIS")
 
+
     # def __str__(self):
     #     return self.planName
 

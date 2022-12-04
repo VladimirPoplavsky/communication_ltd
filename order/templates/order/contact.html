@@ -6,6 +6,8 @@
     <form action="{% url 'contact' %}" method="post">
         {#    token  against csrf attack#}
         {% csrf_token %}
+        <div class="form-error">{{ form.non_field_errors }}</div>
+
         {#   loop is running on each element of form, instead to write 6 similar rows for each field #}
         {% for f in form %}
             <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>

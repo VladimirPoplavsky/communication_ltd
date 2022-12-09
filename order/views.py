@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 
+from .forms import *
 from .models import *
 
 # Create your views here.
@@ -24,10 +25,25 @@ def index(request):
     return render(request, 'order/index.html', context = context)
 
 def about(request):
-    return render(request, 'order/about.html', {'title': 'About'})
+    return render(request, 'order/about.html', {'menu': menu, 'title': 'About Us'})
+
+def message_sent(request):
+    return render(request, 'order/message_sent.html', {'menu': menu, 'title': 'Thank You'})
 
 def contact(request):
-    return render(request, 'order/contact.html', {'title': 'Contact Us'})
+    # if user input is incorrect - he will get back to "Contact Us" form
+    if request.method == 'POST':
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            #print(form.cleaned_data)
+            try:
+                form.save()
+                return redirect('message_sent')
+            except:
+                form.add_error(None, 'There is occurring some error when creating request, please try later')
+    else:
+        form = ContactUsForm()
+    return render(request, 'order/contact.html', {'form': form, 'menu': menu, 'title': 'Contact Us'})
 
 def login(request):
     return HttpResponse("Log in")

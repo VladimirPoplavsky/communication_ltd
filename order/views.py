@@ -38,7 +38,7 @@ def contact(request):
             #print(form.cleaned_data)
             try:
                 form.save()
-                return redirect('message_sent ')
+                return redirect('message_sent')
             except:
                 form.add_error(None, 'There is occurring some error when creating request, please try later')
     else:

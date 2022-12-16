@@ -96,24 +96,24 @@ DATABASES = {
 
 
 AUTH_PASSWORD_VALIDATORS = [
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    #     'OPTIONS': {
-    #         'min_length': validators.passwordLength,
-    #     }
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'communication_ltd.validators.passwordComplexityValidator'
-    # },
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': validators.passwordLength,
+        }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+    {
+        'NAME': 'communication_ltd.validators.passwordComplexityValidator'
+    },
 
     {
         'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',
@@ -121,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
             # How many recently entered passwords matter.
             # Passwords out of range are deleted.
             # Default: 0 - All passwords entered by the user. All password hashes are stored.
-            'last_passwords': 2  # Only the last 5 passwords entered by the user
+            'last_passwords': validators.passwordHistory  # Only the last X passwords entered by the user
         }
     }
 

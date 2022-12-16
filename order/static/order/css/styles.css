@@ -34,6 +34,7 @@ p.link-read-post {
 	text-align: right;
 }
 p.link-read-post a {
+	margin: 0;
 	padding: 10px;
 	min-width: 100px;
 	background: #333671;
@@ -61,9 +62,14 @@ ul.list-articles {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+
+
+
 }
 ul.list-articles li {
 	border-bottom: 1px solid #ccc;
+
+
 }
 
 .table-page {
@@ -427,4 +433,85 @@ ul.lang-list li a:hover {color: #fdc073;}
 }
 .list-pages .page-num-selected:hover {
 	box-shadow: none;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+
+}
+
+.button1 {
+  background-color: #4CAF50;
+  color: black;
+  border: 2px solid #4CAF50;
+	border-radius: 12px;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button2 {
+  background-color: #008CBA;
+  color: black;
+  border: 2px solid #008CBA;
+	border-radius: 12px;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+
+
+
+
+a.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+}
+
+a.button1 {
+  background-color: #4CAF50;
+  color: black;
+  border: 2px solid #4CAF50;
+	border-radius: 12px;
+}
+
+a.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+a.button2 {
+  background-color: #008CBA;
+  color: black;
+  border: 2px solid #008CBA;
+	border-radius: 12px;
+}
+
+a.button2:hover {
+  background-color: #008CBA;
+  color: white;
 }

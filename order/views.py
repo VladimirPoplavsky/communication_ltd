@@ -45,6 +45,7 @@ def contact(request):
         form = ContactUsForm()
     return render(request, 'order/contact.html', {'form': form, 'menu': menu, 'title': 'Contact Us'})
 
+
 def login(request):
     return HttpResponse("Log in")
 

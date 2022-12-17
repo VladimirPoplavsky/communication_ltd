@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'order.apps.OrderConfig',
     'users.apps.UsersConfig',
     'django_password_validators.password_history',
+    'axes',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'communication_ltd.urls'
@@ -169,3 +171,15 @@ EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_PASSWORD'))
 # Media/Images Dir
 MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media')
 MEDIA_URL = 'users/media/'
+
+AUTHENTICATION_BACKENDS = [
+    # AxesStandaloneBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
+    'axes.backends.AxesStandaloneBackend',
+
+    # Django ModelBackend is the default authentication backend.
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+#Max Login Attempts configuration
+AXES_FAILURE_LIMIT = validators.maxTryToLogin
+AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True

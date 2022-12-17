@@ -49,7 +49,6 @@ class passwordComplexityValidator(object):
                       "()[]{}|\`~!@#$%^&*_-+=;:'\",<>./?"),
                     code='password_no_symbol',
                 )
-        return none
 
     def get_help_text(self):
         return _(

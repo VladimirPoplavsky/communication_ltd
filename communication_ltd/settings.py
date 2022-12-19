@@ -14,9 +14,8 @@ from pathlib import Path
 from . import validators
 from dotenv import load_dotenv
 
-# Look and load .env file
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+# Load .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -121,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
             # How many recently entered passwords matter.
             # Passwords out of range are deleted.
             # Default: 0 - All passwords entered by the user. All password hashes are stored.
-            'last_passwords': 2  # Only the last 5 passwords entered by the user
+            'last_passwords': 2  # Only the last X passwords entered by the user
         }
     }
 
@@ -160,11 +159,14 @@ LOGIN_URL = 'login'
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
 EMAIL_HOST_USER = str(os.getenv('EMAIL_USER'))
 EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_PASSWORD'))
+DEFAULT_FROM_EMAIL = str(os.getenv('EMAIL_USER'))
+SERVER_EMAIL = str(os.getenv('EMAIL_USER'))
 
 # Media/Images Dir
 MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media')

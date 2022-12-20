@@ -40,7 +40,7 @@ def contact(request):
                 form.save()
                 return redirect('message_sent')
             except:
-                form.add_error(None, 'There is occurring some error when creating request, please try later')
+                form.add_error(None, 'There is occurring some error, when creating request, please try later')
     else:
         form = ContactUsForm()
     return render(request, 'order/contact.html', {'form': form, 'menu': menu, 'title': 'Contact Us'})

@@ -2,7 +2,9 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import *
-from .models import *
+from order.models import *
+from users.models import *
+
 
 # Create your views here.
 #menu = ["About us", "Contact us", "Log in | Register"]
@@ -17,10 +19,13 @@ menu = [
 def index(request):
     # read plans info from DB
     plans = InternetPlans.objects.all()
+    userPlan = request.user.profile.plan.id
     context = {
         'plans': plans,
         'menu': menu,
         'title': 'Choose Your plan',
+
+        'userPlan': userPlan
     }
     return render(request, 'order/index.html', context = context)
 

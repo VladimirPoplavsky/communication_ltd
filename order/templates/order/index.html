@@ -9,7 +9,13 @@
                 {% if user.is_authenticated and userPlan == p.id %}
                             <h1>Your plan</h1>
                 {% else %}
-                            <p class="link-read-post" style="text-align:center;"> <a href="{{ p.get_absolute_url }}">Upgrade now</a></p>
+{#                    if user is not logged in, will be redirect to login page when press "Upgrade" #}
+                    {% if user.is_authenticated %}
+                        <p class="link-read-post" style="text-align:center;"> <a href="{{ p.get_absolute_url }}">Upgrade now</a></p>
+                        {% else %}
+                            <p class="link-read-post" style="text-align:center;"><a href="{% url 'login' %}" class="nav-item nav-link">Sign in to upgrade</a></p>
+                        {% endif %}
+
                 {% endif %}
                 <h3><br><br><br></h3>
             </li>

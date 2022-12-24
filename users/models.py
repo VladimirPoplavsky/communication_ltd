@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from order.models import InternetPlans  # to-do
+
+import order.models
+from order.models import *  # to-do
 from PIL import Image
 
 
@@ -10,8 +12,7 @@ class Profile(models.Model):
 
     avatar = models.ImageField(default='default.png', upload_to='profile_images')
     bio = models.TextField()
-
-    # plan = models.ForeignKey(InternetPlans, on_delete=models.PROTECT)
+    plan = models.ForeignKey('order.InternetPlans', on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return self.user.username

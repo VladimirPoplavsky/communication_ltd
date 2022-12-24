@@ -1,6 +1,9 @@
+import profile
+
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect, get_object_or_404
 
+import users.models
 from .forms import *
 from order.models import *
 from users.models import *
@@ -19,14 +22,22 @@ menu = [
 def index(request):
     # read plans info from DB
     plans = InternetPlans.objects.all()
-    userPlan = request.user.profile.plan.id
-    context = {
-        'plans': plans,
-        'menu': menu,
-        'title': 'Choose Your plan',
 
-        'userPlan': userPlan
-    }
+    if request.user.is_authenticated:
+        userPlan = request.user.profile.plan.id
+        context = {
+            'plans': plans,
+            'menu': menu,
+            'title': 'Choose Your plan',
+
+            'userPlan': userPlan
+        }
+    else:
+        context = {
+            'plans': plans,
+            'menu': menu,
+            'title': 'Choose Your plan',
+        }
     return render(request, 'order/index.html', context = context)
 
 def about(request):
@@ -34,6 +45,13 @@ def about(request):
 
 def message_sent(request):
     return render(request, 'order/message_sent.html', {'menu': menu, 'title': 'Thank You'})
+
+def plan_upgraded_message(request):
+    # update current internet plan after the user press "Buy now"
+    record = Profile.objects.get(id = request.user.profile.id)
+    record.plan_id = 2
+    record.save()
+    return render(request, 'order/plan_successfully_upgraded.html', {'menu': menu, 'title': 'Congratulations'})
 
 def contact(request):
     # if user input is incorrect - he will get back to "Contact Us" form

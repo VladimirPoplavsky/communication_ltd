@@ -7,7 +7,7 @@
                 <h3>speed: {{ p.speed }}</h3>
                 <h3>price: {{ p.price }} NIS</h3>
                 {% if user.is_authenticated and userPlan == p.id %}
-                            <p class="link-read-post" style="text-align:center;"> <a href="{{ p.get_absolute_url }}">Your plan</a></p>
+                            <h1>Your plan</h1>
                 {% else %}
                             <p class="link-read-post" style="text-align:center;"> <a href="{{ p.get_absolute_url }}">Upgrade now</a></p>
                 {% endif %}

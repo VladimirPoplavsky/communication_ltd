@@ -24,7 +24,12 @@ def index(request):
     plans = InternetPlans.objects.all()
 
     if request.user.is_authenticated:
-        userPlan = request.user.profile.plan.id
+        # If user doesn't have internet plan - '...plan.id' does not exist
+        # to prevent attribute error there is try/except
+        try:
+            userPlan = request.user.profile.plan.id
+        except:
+            userPlan = 0
         context = {
             'plans': plans,
             'menu': menu,

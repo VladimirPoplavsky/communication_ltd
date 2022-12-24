@@ -29,7 +29,6 @@ def index(request):
             'plans': plans,
             'menu': menu,
             'title': 'Choose Your plan',
-
             'userPlan': userPlan
         }
     else:
@@ -46,12 +45,6 @@ def about(request):
 def message_sent(request):
     return render(request, 'order/message_sent.html', {'menu': menu, 'title': 'Thank You'})
 
-def plan_upgraded_message(request):
-    # update current internet plan after the user press "Buy now"
-    record = Profile.objects.get(id = request.user.profile.id)
-    record.plan_id = 2
-    record.save()
-    return render(request, 'order/plan_successfully_upgraded.html', {'menu': menu, 'title': 'Congratulations'})
 
 def contact(request):
     # if user input is incorrect - he will get back to "Contact Us" form
@@ -78,6 +71,11 @@ def support(request):
 def upgrade_now(request, plan_id):
     plan = get_object_or_404(InternetPlans, pk = plan_id)
 
+    # global variable "selectedPlan" belongs to global scope for making update  plan_id
+    # in Profile model when user buy new internet plan
+    global selectedPlan
+    selectedPlan = plan_id
+
     context = {
         'plan': plan,
         'menu': menu,
@@ -88,14 +86,14 @@ def upgrade_now(request, plan_id):
     return render(request, 'order/plan.html', context = context)
 
 
-# def plan200(request):
-#     return HttpResponse("plan 200mb")
-#
-# def plan600(request):
-#     return HttpResponse("plan 600mb")
-#
-# def plan1000(request):
-#     return HttpResponse("plan 1000mb")
+def plan_upgraded_message(request):
+    # update current internet plan after the user press "Buy now"
+
+    record = Profile.objects.get(id = request.user.profile.id)
+    record.plan_id = selectedPlan # selectedPlan is defined in function upgrade_now(request, plan_id)
+    record.save()
+    return render(request, 'order/plan_successfully_upgraded.html', {'menu': menu, 'title': 'Congratulations'})
+
 
 #error 404 OUR custom message
 def pageNotFound(request, exception):

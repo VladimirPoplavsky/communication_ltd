@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.conf import settings
 
+# to associate user to its "Contact Us" request
 User = settings.AUTH_USER_MODEL
 
 import users.models

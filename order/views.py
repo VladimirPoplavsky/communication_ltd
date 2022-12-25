@@ -47,6 +47,9 @@ def index(request):
 def about(request):
     return render(request, 'order/about.html', {'menu': menu, 'title': 'About Us'})
 
+def support(request):
+    return render(request, 'order/support.html', {'menu': menu, 'title': 'Technical Support'})
+
 def message_sent(request):
     return render(request, 'order/message_sent.html', {'menu': menu, 'title': 'Thank You'})
 
@@ -72,8 +75,6 @@ def contact(request):
 def login(request):
     return HttpResponse("Log in")
 
-def support(request):
-    return HttpResponse("Technical Support")
 
 def upgrade_now(request, plan_id):
     plan = get_object_or_404(InternetPlans, pk = plan_id)

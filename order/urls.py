@@ -9,6 +9,7 @@ urlpatterns = [
     #path('login/', login, name='login'),
     path('message_sent/', message_sent, name='message_sent'),
     path('plan_upgraded_message/', plan_upgraded_message, name='plan_upgraded_message'),
+    path('support/', support, name='support'),
 
     # path('plan_upgraded_message/<int:plan_id>/', plan_upgraded_message, name='plan_upgraded_message'),
 

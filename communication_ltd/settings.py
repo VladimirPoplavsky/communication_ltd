@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'order.apps.OrderConfig',
     'users.apps.UsersConfig',
     'django_password_validators.password_history',
+    'axes',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'communication_ltd.urls'
@@ -95,35 +97,33 @@ DATABASES = {
 
 
 AUTH_PASSWORD_VALIDATORS = [
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    #     'OPTIONS': {
-    #         'min_length': validators.passwordLength,
-    #     }
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'communication_ltd.validators.passwordComplexityValidator'
-    # },
-
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': validators.passwordLength,
+        }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'communication_ltd.validators.passwordComplexityValidator'
+    },
     {
         'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',
         'OPTIONS': {
             # How many recently entered passwords matter.
             # Passwords out of range are deleted.
             # Default: 0 - All passwords entered by the user. All password hashes are stored.
-            'last_passwords': 2  # Only the last X passwords entered by the user
+            'last_passwords': validators.passwordHistory  # Only the last X passwords entered by the user
         }
+    },
+    {
+        'NAME': 'communication_ltd.validators.passwordBlacklistValidator'
     }
-
 ]
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -171,3 +171,15 @@ SERVER_EMAIL = str(os.getenv('EMAIL_USER'))
 # Media/Images Dir
 MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media')
 MEDIA_URL = 'users/media/'
+
+AUTHENTICATION_BACKENDS = [
+    # AxesStandaloneBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
+    'axes.backends.AxesStandaloneBackend',
+
+    # Django ModelBackend is the default authentication backend.
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+#Max Login Attempts configuration
+AXES_FAILURE_LIMIT = validators.maxTryToLogin
+AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP = True

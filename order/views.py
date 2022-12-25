@@ -57,8 +57,10 @@ def contact(request):
         form = ContactUsForm(request.POST)
         if form.is_valid():
             #print(form.cleaned_data)
+            obj = form.save(commit=False)
+            obj.user = request.user
             try:
-                form.save()
+                obj.save()
                 return redirect('message_sent')
             except:
                 form.add_error(None, 'There is occurring some error, when creating request, please try later')

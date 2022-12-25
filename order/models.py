@@ -1,5 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
+
+User = settings.AUTH_USER_MODEL
 
 import users.models
 
@@ -26,7 +29,7 @@ class InternetPlans(models.Model):
         verbose_name_plural = 'Internet Packages'
 
 class ContactUsRequest(models.Model):
-    user = models.ForeignKey(users.models.Profile, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     message = models.TextField(blank=True)
     subject = models.CharField(max_length=255)
     is_request_processed = models.BooleanField(default=False)

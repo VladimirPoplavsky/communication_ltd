@@ -104,4 +104,4 @@ def plan_upgraded_message(request):
 
 #error 404 OUR custom message
 def pageNotFound(request, exception):
-    return HttpResponseNotFound('<h1>error 404 custom message</h1>')
+    return HttpResponseNotFound('<h1>error 404 custom  message</h1>')

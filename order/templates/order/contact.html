@@ -1,18 +1,21 @@
 {% extends 'order/base.html' %}
-
 {% block content %}
-    <h1>{{title}}</h1>
-
-    <form action="{% url 'contact' %}" method="post">
-        {#    token  against csrf attack#}
-        {% csrf_token %}
-        <div class="form-error">{{ form.non_field_errors }}</div>
-
-        {#   loop is running on each element of form, instead to write 6 similar rows for each field #}
-        {% for f in form %}
-            <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
-            <div class="form-error">{{ f.errors }}</div>
-        {% endfor %}
-        <button type="submit">Send</button>
-    </form>
+<div class="text-center">
+   <div class="card mb-4 rounded-3 shadow-sm mx-auto" style="width: 18rem;">
+      <div class="card-header py-3">
+         <h2>{{ title }}</h2>
+         <br>
+         <form action="{% url 'contact' %}" method="post">
+            {# token  against csrf attack #}
+            {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <label>Subject</label>
+                <p>{{ form.subject }}</p>
+            <label>Message</label>
+                <p>{{ form.message }}</p>
+            <button type="submit" class="btn btn-dark">Send</button>
+         </form>
+      </div>
+   </div>
+</div>
 {% endblock %}

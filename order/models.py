@@ -8,7 +8,6 @@ class InternetPlans(models.Model):
     speed = models.CharField(max_length=20, verbose_name="Speed Mbps")
     price = models.FloatField(verbose_name="Monthly price in NIS")
 
-
     # def __str__(self):
     #     return self.planName
 
@@ -23,11 +22,11 @@ class InternetPlans(models.Model):
         verbose_name = 'Internet Package'
         verbose_name_plural = 'Internet Packages'
 
+
 class ContactUsRequest(models.Model):
-    #user_id = models.IntegerField(verbose_name="User ID", default=None)
+    # user_id = models.IntegerField(verbose_name="User ID", default=None)
     message = models.TextField(blank=True)
     subject = models.CharField(max_length=255)
     is_request_processed = models.BooleanField(default=False)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-

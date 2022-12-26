@@ -1,11 +1,11 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import *
-from .models import *
+from .forms import ContactUsForm
+from .models import InternetPlans
 
 # Create your views here.
-#menu = ["About us", "Contact us", "Log in | Register"]
+# menu = ["About us", "Contact us", "Log in | Register"]
 
 menu = [
     {'title': "About us", 'url_name': 'about'},
@@ -22,20 +22,23 @@ def index(request):
         'menu': menu,
         'title': 'Choose Your plan',
     }
-    return render(request, 'order/index.html', context = context)
+    return render(request, 'order/index.html', context=context)
+
 
 def about(request):
     return render(request, 'order/about.html', {'menu': menu, 'title': 'About Us'})
 
+
 def message_sent(request):
     return render(request, 'order/message_sent.html', {'menu': menu, 'title': 'Thank You'})
+
 
 def contact(request):
     # if user input is incorrect - he will get back to "Contact Us" form
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
         if form.is_valid():
-            #print(form.cleaned_data)
+            # print(form.cleaned_data)
             try:
                 form.save()
                 return redirect('message_sent')
@@ -49,11 +52,13 @@ def contact(request):
 def login(request):
     return HttpResponse("Log in")
 
+
 def support(request):
     return HttpResponse("Technical Support")
 
+
 def upgrade_now(request, plan_id):
-    plan = get_object_or_404(InternetPlans, pk = plan_id)
+    plan = get_object_or_404(InternetPlans, pk=plan_id)
 
     context = {
         'plan': plan,
@@ -62,7 +67,7 @@ def upgrade_now(request, plan_id):
         'plan_selected': plan_id
     }
 
-    return render(request, 'order/plan.html', context = context)
+    return render(request, 'order/plan.html', context=context)
 
 
 # def plan200(request):
@@ -74,6 +79,6 @@ def upgrade_now(request, plan_id):
 # def plan1000(request):
 #     return HttpResponse("plan 1000mb")
 
-#error 404 OUR custom message
+# error 404 OUR custom message
 def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>error 404 custom message</h1>')

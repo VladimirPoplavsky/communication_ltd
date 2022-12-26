@@ -1,16 +1,13 @@
 from django.urls import path
 
-from .views import *
+from .views import index, about, contact, message_sent, upgrade_now
 
 urlpatterns = [
     path('', index, name='home'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
-    #path('login/', login, name='login'),
     path('message_sent/', message_sent, name='message_sent'),
-
-
-    path('plan/<int:plan_id>/', upgrade_now, name = 'plan')
+    path('plan/<int:plan_id>/', upgrade_now, name='plan')
 
     # path('about/', about),
     # path('plan200/', plan200),

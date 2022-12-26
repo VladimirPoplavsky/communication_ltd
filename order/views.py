@@ -90,7 +90,6 @@ def upgrade_now(request, plan_id):
         'title': plan.speed,
         'plan_selected': plan_id
     }
-
     return render(request, 'order/plan.html', context = context)
 
 

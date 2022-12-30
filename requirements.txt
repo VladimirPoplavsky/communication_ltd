@@ -3,3 +3,4 @@ Pillow~=9.3.0
 python-dotenv~=0.21.0
 django-password-validators~=1.7.0
 django-axes~=5.40.1
+django-sslserver~=0.22

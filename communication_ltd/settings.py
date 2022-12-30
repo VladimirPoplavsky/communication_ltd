@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'django_password_validators.password_history',
     'axes',
+    'sslserver',
 ]
 
 MIDDLEWARE = [

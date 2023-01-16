@@ -26,7 +26,6 @@ $ virtualenv env
 - as well, make also migrations separately to each app (here is 2): \
 (env) $ python manage.py makemigrations order\
 (env) $ python manage.py migrate order
-
 (env) $ python manage.py makemigrations users\
 (env) $ python manage.py migrate users
 

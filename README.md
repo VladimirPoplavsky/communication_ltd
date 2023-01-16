@@ -1,5 +1,7 @@
 # communication_ltd
 
+![image](https://user-images.githubusercontent.com/34675746/212680091-d3bc2fd8-1b4b-454f-a6bf-d47298efb760.png)
+
 
 This site is a project created as a part of the course "Computer Security"  of HIT (Holon Institute of Technology)
 This is the web system, developed for an imaginary communication company called Communication_LTD,  sells Internet packages.

@@ -23,6 +23,13 @@ $ virtualenv env
 (env) $ python manage.py makemigrations \
 (env) $ python manage.py migrate 
 
+- as well, make also migrations separately to each app (here is 2): \
+(env) $ python manage.py makemigrations order\
+(env) $ python manage.py migrate order
+
+(env) $ python manage.py makemigrations users\
+(env) $ python manage.py migrate users
+
 
 - create superuser for admin login: \
 (env) $ python manage.py createsuperuser 

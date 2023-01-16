@@ -41,7 +41,9 @@ $ python manage.py createsuperuser
 - to run over HTTPS: \
 $ python manage.py runsslserver --certificate cert.pem --key key.pem 
 
-
+## Admin panel
+ - If You need to access to the site admin panel:\
+ go to file "settings.py", and set parameter "DEBUG = True"  
 
 
 ## Authors

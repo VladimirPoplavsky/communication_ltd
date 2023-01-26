@@ -8,6 +8,18 @@ This is the web system, developed for an imaginary communication company called 
 The site is used by customers, to buy or upgrade their internet plan.
 
 
+Go to "Signup" to register new account, or press "Login" if account already exists.\
+![image](https://user-images.githubusercontent.com/34675746/214829695-aa0b15b7-3f92-4078-a29a-7219dd03fb91.png)
+![image](https://user-images.githubusercontent.com/34675746/214831648-98d715c7-552e-46d1-990e-775277337e43.png)
+
+When You logged in, you can to buy new or update current internt plan\
+![image](https://user-images.githubusercontent.com/34675746/214833818-e4e290b1-5b7f-43ca-bf65-18bd09f2be7e.png)
+
+ 
+ Only Registered user can send "Contact Us" form\
+![image](https://user-images.githubusercontent.com/34675746/214833306-a853651f-aad0-4a9e-b853-74786fe41152.png)
+
+
 ### Installing
 - If You do not have python, You can go to https://www.python.org/downloads/ to download th latest version
 

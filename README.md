@@ -9,6 +9,7 @@ The site is used by customers, to buy or upgrade their internet plan.
 
 
 Go to "Signup" to register new account, or press "Login" if account already exists.\
+If You forgot the password, it can be restored by email\
 ![image](https://user-images.githubusercontent.com/34675746/214829695-aa0b15b7-3f92-4078-a29a-7219dd03fb91.png)
 ![image](https://user-images.githubusercontent.com/34675746/214831648-98d715c7-552e-46d1-990e-775277337e43.png)
 

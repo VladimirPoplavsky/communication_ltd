@@ -13,7 +13,7 @@ Go to "Signup" to register new account, or press "Login" if account already exis
 ![image](https://user-images.githubusercontent.com/34675746/214831648-98d715c7-552e-46d1-990e-775277337e43.png)
 
 When You logged in, you can to buy new or update current internt plan\
-![image](https://user-images.githubusercontent.com/34675746/214833818-e4e290b1-5b7f-43ca-bf65-18bd09f2be7e.png)
+![image](https://user-images.githubusercontent.com/34675746/214834422-93e67f3d-b91a-4f7d-ad3e-ca4077a49cf1.png)
 
  
  Only Registered user can send "Contact Us" form\
